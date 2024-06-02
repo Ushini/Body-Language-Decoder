@@ -1,0 +1,10 @@
+(define *metro* (make-metro 130))
+(define rwindow 60)
+
+(define twnkl
+  (lambda (beat durat)
+     (play fmsynth (pc:random 46 rwindow '(2 4 5 7 9 10 12 13)) 30 (* 0.7 durat))
+     (callback (*metro* (+ beat (* 0.8 durat))) 'twnkl (+ beat durat) durat)))
+
+(twnkl (*metro* 'get-beat 4) '(74 81 81 81 76 81 81 81 77 81 81 81 81 81 81 81) 1)
+(twnkl (*metro* 'get-beat 4) '(0 0 0 77 0 81 0 77 0 81 84 77 81 86 0 77) 0.25)
